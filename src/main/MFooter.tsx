@@ -1,17 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
+import MBackToTop from "./MBackToTop";
 
 const Wrapper = styled.div`
     display: flex;
     border-radius: 100%;
     align-items: center;
     flex-direction: column;
-`
-
-const StyledP = styled.p`
-    bottom: 12px;
-    height: 40px;
-    color: blue;
 `
 
 const StyledLink = styled.a`
@@ -33,9 +28,7 @@ export default function MFooter() {
 
     return(
         <Wrapper>
-            <StyledP>
-                Back to Top
-            </StyledP>
+            <MBackToTop />
             <Link href="https://github.com/vercel/next.js/discussions/10640" passHref>
                 <StyledLink>Share Your Website (Heart)</StyledLink>
             </Link>

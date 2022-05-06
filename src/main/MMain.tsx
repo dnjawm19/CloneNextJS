@@ -1,7 +1,13 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-const myLoader = ({src, width, quality}) => {
+export type Loader = {
+    src: string;
+    width: number;
+    quality: number;
+};
+
+const myLoader = ({src, width, quality}: Loader) => {
     return `https://nextjs.org/${src}?&w=${width}&q=${quality}`
 }
 
@@ -62,16 +68,21 @@ const IMAGE = [
     },
 ]
 
-const StyledP = styled.image`
+const StyledImage = styled.image`
     margin: 20px;
+    
+    &:hover {
+        background: black;
+    }
 `
 
-const MyImage = (props) => {
+const MyImage = (props: any) => {
     return (
         <div>
             {IMAGE.map(({id, loader, src, alt, width, height, quality}) => (
-                <StyledP key={id}>
+                <StyledImage key={id}>
                     <Image
+                        key= {id}
                         loader= {loader}
                         src= {src}
                         alt= {alt}
@@ -79,7 +90,7 @@ const MyImage = (props) => {
                         height= {height}
                         quality= {quality}
                     />
-                </StyledP>
+                </StyledImage>
             ))}
         </div>
     )

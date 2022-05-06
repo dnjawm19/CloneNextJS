@@ -18,6 +18,12 @@ const MiddleWrapper = styled.div`
     padding: 40px;
 `
 
+const StyledDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 export default function Footer() {
 
     return (
@@ -42,9 +48,9 @@ export default function Footer() {
             <div>
                 Vercel
             </div>
-            <div>
+            <StyledDiv>
                 Copyright © 2022 Vercel, Inc. All rights reserved.
-            </div>
+            </StyledDiv>
         </StyledFooter>
     )
 }
