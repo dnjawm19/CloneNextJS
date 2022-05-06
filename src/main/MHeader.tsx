@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 const StyledDiv = styled.div`
     display: flex;
+    height: 147.98px;
+    padding: 32px 0 0;
     flex-direction: column;
     align-items: center;
 `

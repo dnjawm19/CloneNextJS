@@ -4,9 +4,10 @@ import MBackToTop from "./MBackToTop";
 
 const Wrapper = styled.div`
     display: flex;
-    border-radius: 100%;
+    padding: 50px;
     align-items: center;
     flex-direction: column;
+    background: lightblue;
 `
 
 const StyledLink = styled.a`

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useEffect, useState } from "react";
 import styled from "styled-components"
 
 const NAV_LINK = [
@@ -47,23 +48,68 @@ const NAV_LINK = [
         href: 'https://github.com/vercel/next.js/discussions/10640',
         name: 'Heart'
     }
-]
+];
 
-const Nav = styled.nav`
+const Wrapper = styled.div`
     display: flex;
-    height: 80px;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    padding-bottom: 20px;
 `
 
 const StyledLink = styled.a`
-    padding : 2rem;
+    height: 32px;
+    padding : 0 20px;
     color: black;
 `
 
 export default function MNavBar() {
 
+
+    const [scroll,setScroll] = useState(0);
+    const [sweep, setSweep] = useState(false);
+
+    function handleScroll() {
+        setScroll(window.pageYOffset);
+
+        if(scroll > 200) {
+            setSweep(true);
+        } else {
+            setSweep(false);
+        }
+    };
+    
+    useEffect(() => {
+        console.log("ScrollY is ", scroll);
+    }, [scroll]);
+    
+    useEffect(() => {
+        const watch = () => {
+            window.addEventListener('scroll', handleScroll);
+        }
+        watch();
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    })
+
+    const Nav = styled.nav`
+    display: flex;
+    height: 49px;
+    max-width: 1024px;
+    padding: 10px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    position: ${sweep ===true ? "fixed" : "relative"};
+    top: ${sweep ===true ? "277.97px" : 0};
+    left: 0;
+    right: 0;
+    z-index: 1;
+`
+
     return (
+        <Wrapper>
         <Nav>
             {NAV_LINK.map(({id, href, name}) => (
                 <Link key={id}  href={href} passHref>
@@ -71,5 +117,6 @@ export default function MNavBar() {
                 </Link>
             ))}
         </Nav>
+        </Wrapper>
     )
 }
