@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 const NAV_LINK = [
@@ -34,14 +35,6 @@ const NAV_LINK = [
     }
 ]
 
-const Wrapper = styled.div`
-    display: flex;
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid gray;
-    align-items: center;
-`
-
 const Nav = styled.nav`
     display: flex;
     width: 100%;
@@ -59,6 +52,45 @@ const StyledLink = styled.a`
 `
 
 export default function NavBar() {
+
+    const [scroll,setScroll] = useState(0);
+    const [sweep, setSweep] = useState(false);
+
+    function handleScroll() {
+        setScroll(window.pageYOffset);
+
+        if(scroll > 50) {
+            setSweep(true);
+        } else {
+            setSweep(false);
+        }
+    };
+    
+    useEffect(() => {
+        console.log("ScrollY is ", scroll);
+    }, [scroll]);
+    
+    useEffect(() => {
+        const watch = () => {
+            window.addEventListener('scroll', handleScroll);
+        }
+        watch();
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    })
+
+    const Wrapper = styled.div`
+    display: flex;
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid gray;
+    z-index: 1;
+    background: white;
+    align-items: center;
+
+    position: ${sweep ===true ? "fixed" : "relative"};
+`
 
     return (
         <Wrapper>

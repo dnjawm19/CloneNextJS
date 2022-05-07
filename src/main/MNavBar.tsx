@@ -50,10 +50,13 @@ const NAV_LINK = [
     }
 ];
 
-const Wrapper = styled.div`
+const Nav = styled.nav`
     display: flex;
-    width: 100%;
-    padding-bottom: 20px;
+    height: 49px;
+    max-width: 1024px;
+    padding: 10px;
+    margin: 0 auto;
+    justify-content: space-between;
 `
 
 const StyledLink = styled.a`
@@ -92,20 +95,15 @@ export default function MNavBar() {
         }
     })
 
-    const Nav = styled.nav`
+    const Wrapper = styled.div`
     display: flex;
-    height: 49px;
-    max-width: 1024px;
-    padding: 10px;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    position: ${sweep ===true ? "fixed" : "relative"};
-    top: ${sweep ===true ? "277.97px" : 0};
-    left: 0;
-    right: 0;
+    width: 100%;
     z-index: 1;
+    background: white;
+    align-items: center;
+
+    position: ${sweep ===true ? "fixed" : "relative"};
+    top: ${sweep ===true ? "80px" : 0};
 `
 
     return (

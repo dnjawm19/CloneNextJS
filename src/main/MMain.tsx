@@ -73,6 +73,26 @@ const IMAGE = [
         height: 500,
         quality: 75
     },
+    {
+        id: 7,
+        title: "att",
+        loader: myLoader,
+        src: "_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fatt.1f25011a.jpg",
+        alt: "picture",
+        width: 500,
+        height: 500,
+        quality: 75
+    },
+    {
+        id: 8,
+        title: "tencent-news",
+        loader: myLoader,
+        src: "_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftencentnews.6ecd300c.jpg",
+        alt: "picture",
+        width: 500,
+        height: 500,
+        quality: 75
+    },
 ]
 
 const Wrapper = styled.div`
@@ -82,7 +102,8 @@ const Wrapper = styled.div`
 `
 
 const StyledDiv = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
